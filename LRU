@@ -1,0 +1,75 @@
+include<stdio.h>
+int findLRU(int time[],int n)
+{
+  int min=time[0],pos=0;
+  for(int i=1;i<n;i++)
+  {
+    if(time[i]<min)
+    {
+       min=time[i];
+       pos=i; 
+    }
+  }
+  return pos;
+}
+int main()
+{
+  int temp[20],time[20],pages[20];
+  int i,j,n,frames,fault=0,cnt=0;
+  printf("Enter no of Pages:");
+  scanf("%d",&n);
+  printf("Enter page reference String:");
+  for(i=0;i<n;i++)
+  {
+    scanf("%d",&pages[i]);
+  }
+  printf("Enter no of frames:");
+  scanf("%d",&frames);
+  for(i=0;i<frames;i++)
+  {
+    temp[i]=-1;
+  }
+  printf("\nPage reference string | Frames\n");
+  for(i=0;i<n;i++)
+  {
+    int f=0;
+    for(j=0;j<frames;j++)
+    {
+      if(temp[j]==pages[i])
+      {
+           f=1;
+           time[j]=cnt++;  
+           break; 
+      }
+    }
+    if(!f)
+    {
+       int pos;
+       if(i<frames)
+       {
+          pos=i;  
+       } 
+       else
+       {
+          pos=findLRU()time,frames;         
+       }
+       temp[pos]=pages[i];
+       time[pos]=cnt++;
+       faults++;  
+    }
+    printf("\n%2d\t\t\t",pages[i]);
+    for(j=0;j<frames;j++)
+    {
+        if(temp[j]!=-1)
+        {
+             printf("%2d ",temp[j]);      
+        }
+        else
+         {
+            printf("-");
+         } 
+    }
+  printf("total page faults::%d",faults);
+}
+  }
+}
