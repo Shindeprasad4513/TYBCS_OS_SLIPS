@@ -51,7 +51,7 @@ int main()
        } 
        else
        {
-          pos=findLRU()time,frames;         
+          pos=findLRU(time,frames);         
        }
        temp[pos]=pages[i];
        time[pos]=cnt++;
